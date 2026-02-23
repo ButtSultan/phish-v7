@@ -1,39 +1,28 @@
 import requests
 import time
-import sys
 
 # --- CONFIG ---
-BRIDGE_URL = "https://script.google.com/macros/s/AKfycbzL_njCl5CDQidqHMb2LFt0AVqN6bz0ZOBZ5iMCq3WKofvvV0EunyGh0C1G18yAujH3mw/exec"
-ADMIN_ID = "6671784926"
+URL = "https://script.google.com/macros/s/AKfycbxwolMlVYg8m1y8YXWeAZfoEVi00KBTTNljOZBiXd0pmsPoXis9-3psCoWbUgRlNPerdA/exec"
+ADMIN = "6671784926"
 
-def check_connection():
-    print("🚀 Bypassing ISP... Routing via Google...")
-    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'}
+def check():
+    print("🚀 Connecting via Omni-Bridge...")
+    s = requests.Session()
     try:
-        # Use allow_redirects=True to handle Google's internal jumps
-        response = requests.get(BRIDGE_URL, headers=headers, allow_redirects=True, timeout=20)
-        
-        if response.status_code == 200:
-            try:
-                data = response.json()
-                if data.get("ok"):
-                    bot_user = data['result']['username']
-                    print(f"✅ Gold Connection: @{bot_user} is ONLINE")
-                    return True
-            except:
-                print("❌ Bridge Error: Google returned HTML instead of JSON.")
-                print("Tip: Go to Google Script -> Deploy -> New Deployment -> Access: ANYONE")
-        else:
-            print(f"❌ HTTP Error: {response.status_code}")
+        # allow_redirects handles Google's macro jump
+        r = s.get(URL, allow_redirects=True, timeout=20)
+        if r.status_code == 200:
+            data = r.json()
+            if data.get("ok"):
+                print(f"✅ Gold Connection: @{data['result']['username']} is ONLINE")
+                s.post(URL, json={"chat_id":ADMIN, "text":"<b>🔥 v21.0 OMNI-BRIDGE ONLINE</b>", "parse_mode":"HTML"})
+                return True
+        print(f"❌ Error: {r.status_code}")
     except Exception as e:
-        print(f"❌ Connection Error: {e}")
+        print(f"❌ Bridge Error: {e}")
     return False
 
 if __name__ == "__main__":
-    if check_connection():
-        print("Monitoring hits... (Press Ctrl+C to stop)")
-        while True:
-            try:
-                time.sleep(60)
-            except KeyboardInterrupt:
-                sys.exit()
+    if check():
+        print("Monitoring... (Ctrl+C to stop)")
+        while True: time.sleep(60)
