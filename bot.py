@@ -1,40 +1,30 @@
-import requests
-import time
+import requests, time
 
-# --- PASTE NEW URL HERE ---
+# PASTE THE NEW URL FROM STEP 4 HERE
 URL = "https://script.google.com/macros/s/AKfycbykb7gQF51Mlg1YZgQcSxlpQIHAkcKhF-nJ_-jyaR0ur-YY1KsLaoZltPF1IbnJNs0HXw/exec"
 ADMIN = "6671784926"
 
-def start_bot():
-    print("🚀 Connecting via Omni-Bridge v22.0...")
-    session = requests.Session()
-    # Google uses redirects, so we must follow them
-    session.max_redirects = 10 
-    
+def check_bridge():
+    print("🚀 Testing Omni-Bridge Connection...")
     try:
-        # Step 1: Check Connection
-        r = session.get(URL, allow_redirects=True, timeout=20)
+        # We use a GET request to test the 'doGet' function
+        r = requests.get(URL, allow_redirects=True, timeout=20)
         
-        # Check if the response is actually JSON
-        if r.headers.get('content-type', '').startswith('application/json'):
-            data = r.json()
-            if data.get("ok"):
-                bot_user = data['result']['username']
-                print(f"✅ Gold Connection: @{bot_user} is ONLINE")
-                
-                # Step 2: Send Admin Alert
-                payload = {"chat_id": ADMIN, "text": "<b>🔥 v22.0 OMNI-BRIDGE ONLINE</b>\n🛡️ Status: <i>Bridged via Google</i>", "parse_mode": "HTML"}
-                session.post(URL, json=payload, allow_redirects=True)
-                return True
-        else:
-            print("❌ Bridge Error: Google returned HTML. Check deployment settings!")
+        if "<!DOCTYPE html>" in r.text or "login.google.com" in r.url:
+            print("❌ ERROR: Google is still asking for LOGIN.")
+            print("FIX: In Deployment, set 'Who has access' to 'ANYONE'.")
+            return False
             
+        print("✅ SUCCESS: Bridge is open to the public!")
+        # Send a test message
+        requests.post(URL, json={"chat_id": ADMIN, "text": "<b>🔥 OMNI-V25 LIVE</b>", "parse_mode": "HTML"})
+        return True
     except Exception as e:
-        print(f"❌ Connection Error: {e}")
-    return False
+        print(f"❌ Connection Failed: {e}")
+        return False
 
 if __name__ == "__main__":
-    if start_bot():
-        print("Monitoring... (Ctrl+C to exit)")
+    if check_bridge():
+        print("Monitoring hits...")
         while True: time.sleep(60)
 
