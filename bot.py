@@ -1,28 +1,40 @@
 import requests
 import time
 
-# --- CONFIG ---
-URL = "https://script.google.com/macros/s/AKfycbxwolMlVYg8m1y8YXWeAZfoEVi00KBTTNljOZBiXd0pmsPoXis9-3psCoWbUgRlNPerdA/exec"
+# --- PASTE NEW URL HERE ---
+URL = "https://script.google.com/macros/s/AKfycbykb7gQF51Mlg1YZgQcSxlpQIHAkcKhF-nJ_-jyaR0ur-YY1KsLaoZltPF1IbnJNs0HXw/exec"
 ADMIN = "6671784926"
 
-def check():
-    print("🚀 Connecting via Omni-Bridge...")
-    s = requests.Session()
+def start_bot():
+    print("🚀 Connecting via Omni-Bridge v22.0...")
+    session = requests.Session()
+    # Google uses redirects, so we must follow them
+    session.max_redirects = 10 
+    
     try:
-        # allow_redirects handles Google's macro jump
-        r = s.get(URL, allow_redirects=True, timeout=20)
-        if r.status_code == 200:
+        # Step 1: Check Connection
+        r = session.get(URL, allow_redirects=True, timeout=20)
+        
+        # Check if the response is actually JSON
+        if r.headers.get('content-type', '').startswith('application/json'):
             data = r.json()
             if data.get("ok"):
-                print(f"✅ Gold Connection: @{data['result']['username']} is ONLINE")
-                s.post(URL, json={"chat_id":ADMIN, "text":"<b>🔥 v21.0 OMNI-BRIDGE ONLINE</b>", "parse_mode":"HTML"})
+                bot_user = data['result']['username']
+                print(f"✅ Gold Connection: @{bot_user} is ONLINE")
+                
+                # Step 2: Send Admin Alert
+                payload = {"chat_id": ADMIN, "text": "<b>🔥 v22.0 OMNI-BRIDGE ONLINE</b>\n🛡️ Status: <i>Bridged via Google</i>", "parse_mode": "HTML"}
+                session.post(URL, json=payload, allow_redirects=True)
                 return True
-        print(f"❌ Error: {r.status_code}")
+        else:
+            print("❌ Bridge Error: Google returned HTML. Check deployment settings!")
+            
     except Exception as e:
-        print(f"❌ Bridge Error: {e}")
+        print(f"❌ Connection Error: {e}")
     return False
 
 if __name__ == "__main__":
-    if check():
-        print("Monitoring... (Ctrl+C to stop)")
+    if start_bot():
+        print("Monitoring... (Ctrl+C to exit)")
         while True: time.sleep(60)
+
